@@ -1,0 +1,33 @@
+.custom-shape-divider-bottom-1667901125 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1667901125 svg {
+    position: relative;
+    display: block;
+    width: calc(148% + 1.3px);
+    height: 88px;
+    transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1667901125 .shape-fill {
+    fill: #FFFFFF;
+}
+
+
+.team {
+    top: 2px;
+    font-size: 100px;
+    left: 100px;
+    text-transform: uppercase;
+    font-weight: 800;
+    z-index: 100;
+    opacity: 0.4;
+    color: white;
+}

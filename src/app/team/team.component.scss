@@ -1,0 +1,148 @@
+.custom-shape-divider-bottom-1667901407 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1667901407 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 88px;
+}
+
+.custom-shape-divider-bottom-1667901407 .shape-fill {
+    fill: #FFFFFF;
+}
+
+.container {
+    margin-top: 100px;
+    width: 100%;
+    text-align: center;
+}
+
+.container .box {
+    position: relative;
+    display: inline-block;
+    margin: 20px;
+    padding-bottom: 20px;
+    width: 300px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 0 0 4px #EB7C11, 0 0 0 8px #262626, 0 0 0 12px #EB7C11,
+        0 0 0 17px #373636, 0 10px 10px #000;
+    cursor: pointer;
+    transition: .5s;
+    background: #262626;
+    color: #fff;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 150px;
+    border-bottom-right-radius: 150px;
+}
+
+.container .box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px #EB7C11, 0 0 0 8px #262626, 0 0 0 12px #EB7C11,
+        0 0 0 17px #373636, 0 20px 15px rgba(0, 0, 0, .5);
+}
+
+.container:hover .box {
+    opacity: .1;
+}
+
+.container:hover .box:hover {
+    opacity: 1;
+}
+
+.container .box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255, 255, 255, .1);
+}
+
+.container .box .row {
+    position: relative;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.container .box .row.live-support {
+    border: none;
+}
+
+.container .box .row:nth-of-type(1) {
+    width: 100%;
+    color: #fff;
+    line-height: 30px;
+    text-transform: uppercase;
+    padding: 15px 0;
+}
+
+.container .box .row:nth-child(1) span:nth-child(1) .fa,
+.container .box .row:nth-child(2) span {
+    color: #EB7C11;
+}
+
+.container .box .row:nth-of-type(1) span:nth-of-type(1) {
+    font-size: 45px;
+    width: 80px;
+    line-height: 80px;
+    text-align: center;
+    height: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.container .box .row:nth-of-type(1) span:nth-of-type(2) {
+    font-size: 27px;
+}
+
+.container .box .row:nth-of-type(2) span:nth-of-type(1) {
+    vertical-align: top;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.container .box .row:nth-of-type(2) span:nth-of-type(2) {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.container .box .row .fa {
+    color: #fff;
+}
+
+.team{
+    top: 2px;
+    font-size: 100px;
+    left: 100px;
+    text-transform: uppercase;
+    font-weight: 800;
+    z-index: 100;
+    opacity: 0.4;
+    color: white;
+}
+
+.container .box .row a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: lowercase;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin: 20px 0;
+    background: #EB7C11;
+    color: #262626;
+}

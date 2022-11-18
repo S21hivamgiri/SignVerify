@@ -1,0 +1,33 @@
+.navbar {
+    right: 0;
+    z-index: 102;
+    top: 20px;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+.navbar-brand {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 100% 0 0 100%;
+    img {
+        border: 1px solid white;
+        border-radius: 100%;
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
+
+.navbar-collapse {
+    height: 60px;
+    padding-right: 60px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.active {
+    background: #EB7C11;
+    border-radius: 999em;
+    border: 2px solid black;
+}

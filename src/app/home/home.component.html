@@ -1,0 +1,149 @@
+<img src="/assets/sign-verify-logo.svg" width="100px" style="top:10px;left:10px;position:absolute;z-index:101">
+<div style="position:relative">
+    <img src="/assets/hackathon-web-theme.png" width="100%">
+    <div class="custom-shape-divider-bottom-1667839506">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path
+                d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                opacity=".25" class="shape-fill"></path>
+            <path
+                d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                opacity=".5" class="shape-fill"></path>
+            <path
+                d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                class="shape-fill"></path>
+        </svg>
+    </div>
+</div>
+
+<div class="container fade-in" style="position:relative">
+    <div class="capture-text fw-bold h1">
+        SignVerify For a Better Signature Verification.
+    </div>
+    <div class="capture-text">
+        We match the signature helping in stopping frogery at various administration, institutes and organisation
+        helping the World facing issues of Signature Frogery.
+    </div>
+    <div class="header p-5">
+        <div class="form">
+            <div class="row">
+                <div class="col-12 d-flex flex-column align-items-center justify-content-center p-4 pb-0"
+                    [class.uploading]="fileAdded">
+                    <div class="d-flex justify-content-center w-100 captured-text-wrapper" *ngIf="fileAdded">
+                        <div class="captured-text h1" *ngIf="fileAdded">Image Captured</div>
+                        <div *ngIf="uploaded && prediction" class="captured-text h1">&nbsp;Prediction : {{prediction}}%</div>
+                    </div>
+                    <div class="scanner-container my-2 d-flex justify-content-center align-items-center flex-column">
+                        <div class="top left" *ngIf="uploading  && !uploaded"></div>
+                        <div class="top right" *ngIf="uploading && !uploaded"></div>
+                        <div class="bottom right" *ngIf="uploading && !uploaded"></div>
+                        <div class="bottom left" *ngIf="uploading && !uploaded"></div>
+                        <div class="scan-bar" *ngIf="uploading && !uploaded"></div>
+                        <div class="d-flex justify-content-center">
+                            <img [class.uploading-image]="fileAdded" id="output" crossorigin="anonymous" />
+                        </div>
+                        <div *ngIf="uploaded">File Uploaded Successfully</div>
+                        <div
+                            class="flex-column camera d-flex justify-content-center align-items-center position-relative">
+                            <div class="top left" *ngIf="cameraCapturing && !fileAdded"></div>
+                            <div class="top right" *ngIf="cameraCapturing && !fileAdded"></div>
+                            <div class="bottom right" *ngIf="cameraCapturing && !fileAdded"></div>
+                            <div class="bottom left" *ngIf="cameraCapturing && !fileAdded"></div>
+                            <video id="video" [width]="cameraCapturing && !fileAdded?'320':0"
+                                [height]="cameraCapturing  && !fileAdded?'240':0" autoplay></video>
+                            <button type="button" (click)=" captureImage()" class="btn btn-light click capture-button"
+                                title="Click to Capture" *ngIf="cameraCapturing && !fileAdded">
+                                <i class="fa fa-circle-o"></i>
+                            </button>
+                            <button type="button" (click)="cameraCapturing=false;stopStream()"
+                                class="btn btn-danger cross capture-button" title="Click to cllose"
+                                *ngIf="cameraCapturing && !fileAdded">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center captured-text-wrapper remove-button-wrapper"
+                *ngIf="fileAdded">
+                <button type="button" class="btn btn-sm btn-danger m-2 p-2" (click)="removeImage()">
+                    <i class="fa fa-ban me-2"></i>Remove Image
+                </button>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                    <div class="input-group mb-3" *ngIf="!gettingUid">
+                        <span class="input-group-text form-prefix" id="basic-addon1">@</span>
+                        <input type="text" class="form-control" placeholder="UID" aria-label="UID"
+                            aria-describedby="basic-addon1" [(ngModel)]="uid">
+                    </div>
+                    <div *ngIf="gettingUid" class="fw-bold">{{name}}, Please upload signature file.</div>
+
+                </div>
+
+                <div *ngIf="isNewUser && isNewUserAdded" class="col-12 col-sm-12 col-md-12 col-lg-6 d-flex justify-content-center">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text form-prefix" id="basic-addon1"><i class="fa fa-user"></i></span>
+                        <input type="text" class="form-control" placeholder="Name" aria-label="Name"
+                            aria-describedby="basic-addon1" [(ngModel)]="name">
+                    </div>
+                </div>
+                <div class="col-10 col-sm-10 col-md-10 col-lg-5">
+                    <div class="input-group mb-3" *ngIf="gettingUid">
+                        <label class="input-group-text form-prefix" for="inputGroupFile01"><i
+                                class="fa fa-edit"></i></label>
+                        <input type="file" class="form-control" [disabled]="fileAdded"
+                            (change)="handleFileSelect($event)" id="inputGroupFile01" accept=".png, .jpg, .jpeg">
+                    </div>
+                </div>
+                <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+                    <div class="input-group mb-3" *ngIf="gettingUid">
+                        <button type="button" class="btn submit-button" [disabled]="fileAdded"
+                            (click)="cameraCapturing=true; createStream()">
+                            <i class="fa fa-camera"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center" *ngIf="!gettingUid && !isNewUser ">
+                    <button type="button" class="btn btn-lg submit-button" [disabled]="!uid" (click)="submit();">
+                        <i class="fa fa-cloud-upload me-2"></i>Submit UID
+                    </button>
+                </div>
+                <div class="row" *ngIf="isNewUser && isNewUserAdded">
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="button" class="btn btn-lg btn-success" [disabled]="!uid"
+                            (click)="submitNewUser();">
+                            <i class="fa fa-male me-2"></i>Create New User
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" *ngIf="gettingUid">
+                <div class="col-12 d-flex justify-content-center">
+                    
+                    <button type="button" class="btn btn-lg submit-button btn-flick" [disabled]="!fileAdded"
+                        (click)="submitImage(true);">
+                        <i class="fa fa-cloud-upload"></i>
+                    </button>
+                    <button type="button" class="btn btn-lg submit-button" [disabled]="!fileAdded"
+                        (click)="submitImage();">
+                        <i class="fa fa-cloud-upload me-2"></i>Submit File
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3 d-flex justify-content-center"></div>
+                <div class="col-9 d-flex justify-content-start">
+                    <div class="mt-5 instructions">
+                        * Add the Unique User Name.<br>
+                        * Add the signature file by upload or camera or Ctrl + V<br>
+                        * Hit Submit for verification. <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
